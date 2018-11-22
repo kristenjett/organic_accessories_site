@@ -1,24 +1,37 @@
-baseurl = "https://example.org/"
+
+baseurl = "https://kristenjett.github.io/"
 title = "Organic Accessories"
 theme = "hugo-creative-portfolio-theme"
 languageCode = "en-us"
+
 # Enable comments by entering your Disqus shortname
 disqusShortname = ""
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = ""
 
+# Disable the home content pages from being created
+# disableKinds = "page"
+
+[permalinks]
+  home = " "
+
+# Publish the final result to the docs folder (published via running the command hugo)
 publishDir = "docs"
+
+# Change permalinks to link the portfolio page to the home page
 
 [params]
   # Style options: default (pink), blue, green, pink, red, sea, violet
   # Use custom.css for your custom styling
-  style = "red"
+  style = "pink"
   description = "We are a clothing and accessories boutique, located in Coppell, Texas. Our unique goods are hand-chosen and designed for women who want to dress with a casual contemporary style. Stay in touch with us via the links below to see our seasonal sales and products, or email me to setup an appointment and see how I can help you express your style."
 
 
   copyright = "&copy;2018 Organic Accessories"
   sidebarAbout = [
-    "We are a clothing and accessories boutique, located in Coppell, Texas. Our uniquely selected goods are chosen by the owner and designed for women who want to dress with a casual contemporary style. Stay in touch with us via the links below to see our seasonal sales and products, or email me to setup an appointment and see how I can help you express your style."
+    "We are a clothing, gifts, and accessories boutique located in Coppell, TX. We carry hand selected goods, designed for women who want to share a casual contemporary style.",
+
+    "Visit the links below to learn about our upcoming sales, or email me to setup an appointment and see how I can help you express your style."
   ]
   # Contact page
      # Since this template is static, the contact form uses www.formspree.io as a
@@ -32,20 +45,22 @@ publishDir = "docs"
      # - send a dummy email yourself to confirm your account
      # - click the confirm link in the email from www.formspree.io
      # - you're done. Happy mailing!
+
   email = "kkjett24@gmail.com"
 
   # Nav links in the side bar
   [[params.navlinks]]
   name = "Home"
-  url = "portfolio/"
+  url = "home/"
+  # Changed from 'portfolio'
   home = true
 
   [[params.navlinks]]
-  name = "About"
+  name = "About the Store"
   url = "about/"
 
   [[params.navlinks]]
-  name = "Get in touch"
+  name = "Get in Touch"
   url = "contact/"
 
   [params.social]

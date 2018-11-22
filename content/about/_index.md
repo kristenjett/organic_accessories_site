@@ -1,19 +1,24 @@
 +++
-date = "2018-11-05T21:05:33+05:30"
-title = "About me"
+date = "2018-11-20T21:05:33+05:30"
+title = "About the Store"
 +++
 
-Hi everybody! Its a website
+#### Sample Sales
+Organic Accessories hosts biannual sales in September and February. The sales contain thousands of clothing samples from popular brands sold at wholesale prices. Check out our facebook page for updates on upcoming sales and locations.
 
-![This is me][1]
+#### Products
+*I pick the products I like. I'm always searching for distinctive, head-turning items that I would love to wear or recieve. I love helping women to complete their look with uncommon accessories and attractive home collections.*
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- Kristen Jett, the owner of Organic Accessories
 
-The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn't listen. She packed her seven versalia, put her initial into the belt and made herself on the way.
+#### History
+Organic Accessories was opened in 2008 by Kristen Jett. The store started as an outlet for her to create and share custom-made belt buckles, bracelets, and jewelry, but as women appreciated Kristen's style and taste, she broadened her approach to include the clothing, gifts, and accessories on sale today. 
 
-#### Education
+#### Our Owner
+Kristen Jett is a mother of 3 from Tulsa, Oklahoma. She's worked in the fashion industry as a sales rep for over a decade and has a passion and eye for style. She's naturally generous and thoughtful and loves to help women express strength and identity through their style. She also loves spending time with her family, walking her 2 retrievers, and visiting new places. 
 
-* Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-* Aliquam tincidunt mauris eu risus.
-
-When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then
+![Kristen Jett][2]
+<center>*Kristen (left) and her daughter Emma*</center>
 
 [1]: /img/about.jpg
+[2]: /img/kristen_jett_v3.jpg

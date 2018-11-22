@@ -1,8 +1,9 @@
 <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
-  <div class="sidebar-content">
-    <h1 class="sidebar-heading"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+  <div class="sidebar-content" style="margin-right:3em; height:100vh">
+    <h1 class="sidebar-heading" style="font-size: 200%">
+      <a><!--{{ .Site.Title }}--> <img src="/img/Organic_Accessories_alt.png" alt="Org Access Logo" style="width:80%; margin-left:0em"></a></h1>
     {{ range .Site.Params.sidebarAbout }}
-      <p class="sidebar-p">{{ . | safeHTML }}</p>
+      <p class="sidebar-p" style="margin-right:2em">{{ . | safeHTML }}</p>
     {{ end }}
     <ul class="sidebar-menu">
       {{ range .Site.Params.navlinks }}
@@ -10,14 +11,17 @@
       {{ end }}
     </ul>
     {{ partial "social_buttons_in_sidebar.html" . }}
-
-    <div class="copyright">
-      <p class="credit">
+    <div style="position:fixed; bottom:1em; width:22vw">
+<div class="copyright" >
+      <p class="credit" style="font-size: 10px">
         {{ with .Site.Params.copyright }}
           {{ . | safeHTML }}
         {{ end }}
+        <br>
         {{ partial "attribution.html" . }}
       </p>
-    </div>
+    </div> 
   </div>
+  </div>
+ 
 </div>
