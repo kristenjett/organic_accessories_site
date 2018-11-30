@@ -4,19 +4,18 @@ title = "Organic Accessories"
 theme = "hugo-creative-portfolio-theme"
 languageCode = "en-us"
 
-# Enable comments by entering your Disqus shortname
-disqusShortname = ""
 # Enable Google Analytics by entering your tracking code
-googleAnalytics = ""
+googleAnalytics = "UA-125587608-4"
 
 # Disable the home content pages from being created
 # disableKinds = "page"
 
-[permalinks]
-  home = " "
-
 # Publish the final result to the docs folder (published via running the command hugo)
 publishDir = "docs"
+
+# link all pages to a nonexistent map
+[permalinks]
+  home = " "
 
 # Change permalinks to link the portfolio page to the home page
 
@@ -67,3 +66,4 @@ publishDir = "docs"
   instagram     = "https://www.instagram.com/organic_accessories/?hl=en"
   facebook      = "https://www.facebook.com/organic.accessories/?ref=br_rs"
   email         = "kkjett24@gmail.com"
+
