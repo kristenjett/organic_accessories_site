@@ -32,28 +32,33 @@
     display: display
     rows: 4
     FloatLayout:
-        SelectImage:
+        Label:
             pos_hint: {"x":0.25, "top":0.65}
-            size_hint: 0.5, 0.10
-            text: '1. Press this button to select an image for the new post'
-            on_release: root.select_image()
+            size_hint: 0.5, 0.05
+            text: 'A. Enter in the path to the image file for the new post'
+
+        TextInput:
+            pos_hint: {"x":0.1, "top":0.58}
+            size_hint: 0.8, 0.05
+            id: path_to_image
+            text: ''
+
 
 
         Label:
             # Positioning details
-            pos_hint: {"x":0.1, "top":0.525}
+            pos_hint: {"x":0.1, "top":0.51}
             size_hint: 0.8, 0.08
             text_size: 0.8*self.width, None
             halign: 'center'
             valign: 'middle'
-
-            id: 'post_name'
-            text: "2. Enter the name of the new post you would like to put on the website (For example, 'Volcano Candles' or 'Corkcicle Bottles') in the box below"
+            text: "B. Enter the name of the new post you would like to put on the website (For example, 'Volcano Candles' or 'Corkcicle Bottles') in the box below"
 
         TextInput:
             # Positioning details
-            pos_hint: {"x":0.3, "top":0.425}
-            size_hint: 0.4, 0.08
+            pos_hint: {"x":0.3, "top":0.41}
+            size_hint: 0.4, 0.06
+            id: new_post_name
 
         Label:
             # Positioning details
@@ -62,19 +67,18 @@
             text_size: 0.8*self.width, None
             halign: 'center'
             valign: 'middle'
-
-            id: 'post_name'
-            text: "3. Enter a short blurb about the post you would like to put on the website in the box below"
+            text: "C. Enter a short blurb about the post you would like to put on the website in the box below"
             
         TextInput:
             # Positioning details
             pos_hint: {"x":0.1, "top":0.24}
             size_hint: 0.8, 0.08
+            id: post_blurb
 
         UpdateWebsite:
             pos_hint: {"x":.35, "top":0.12}
             size_hint: 0.3, 0.08
-            text: '4. Press this to update the website'
+            text: 'D. Press this to update the website'
             on_release: root.update_website()
 
         Label:
@@ -86,32 +90,24 @@
 
 <RemovePost>:
 # This widget will be rendered if the Add Post to Website toggle button is pressed
-    id: 1
+    # id: rmpost
     display: display
     rows: 4
     FloatLayout:
-        SelectImage:
-            pos_hint: {"x":0.25, "top":0.65}
-            size_hint: 0.5, 0.10
-            text: '1. Press this button to select an image for the new post'
-            on_release: root.select_image()
-
+        Label:
+            pos_hint: {"x":0.2, "top":0.65}
+            size_hint: 0.6, 0.04
+            text: 'A. Read through the following list of posts currently on your website and pick out which one you want to remove.'
 
         Label:
-            # Positioning details
-            pos_hint: {"x":0.1, "top":0.525}
-            size_hint: 0.8, 0.08
-            text_size: 0.8*self.width, None
+            id: postlistlbl
+            pos_hint: {"x":0.1, "top":0.56}
+            size_hint: 0.8, 0.2
+            text_size: self.width, None
             halign: 'center'
             valign: 'middle'
+            text: 'Error'
 
-            id: 'post_name'
-            text: "Pick out the post that you want to delete from the following list"
-
-        TextInput:
-            # Positioning details
-            pos_hint: {"x":0.3, "top":0.425}
-            size_hint: 0.4, 0.08
 
         Label:
             # Positioning details
@@ -120,19 +116,18 @@
             text_size: 0.8*self.width, None
             halign: 'center'
             valign: 'middle'
+            text: "B. Type in the number of the post that you want to delete from the above list"
 
-            id: 'post_name'
-            text: "3. Enter a short blurb about the post you would like to put on the website in the box below"
-            
         TextInput:
             # Positioning details
-            pos_hint: {"x":0.1, "top":0.24}
-            size_hint: 0.8, 0.08
+            pos_hint: {"x":0.4, "top":0.24}
+            size_hint: 0.2, 0.08
+            id: rm_post_id
 
         UpdateWebsite:
             pos_hint: {"x":.35, "top":0.12}
             size_hint: 0.3, 0.08
-            text: '4. Press this to update the website'
+            text: 'C. Press this to update the website'
             on_release: root.update_website()
 
         Label:
