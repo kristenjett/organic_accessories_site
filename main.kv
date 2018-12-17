@@ -1,0 +1,143 @@
+<DefaultState>:
+# Everything inside this widget will be displayed permanently while the app is running
+    id: 0
+    rows:2
+    FloatLayout:
+        orientation: "vertical"
+        Label:
+            pos_hint: {"x":0, "top":1}
+            id: app_intro
+            size_hint: 1,0.2
+            text_size: 0.8*self.width, None
+            halign: 'center'
+            valign: 'middle'
+            text: 'This app will allow you update the organic_accessories.com website by adding or removing posts from the website. For further changes, or any issues with the functionality of the app or website, please contact Sam Jett at samjett247@gmail.com.'
+
+        ToggleButton:
+            pos_hint: {"x":0, "top":0.8}
+            size_hint: 0.5,0.1
+            group: "Site_Type_Group"
+            text: 'Add Post to Website'
+            on_press: root.add_post()
+        ToggleButton:
+            pos_hint: {"x":0.5, "top":0.8}
+            size_hint: 0.5,0.1
+            group: "Site_Type_Group"
+            text: 'Remove Post from Website'
+            on_press: root.remove_post()
+
+<AddPost>:
+# This widget will be rendered if the Add Post to Website toggle button is pressed
+    id: 1
+    display: display
+    rows: 4
+    FloatLayout:
+        SelectImage:
+            pos_hint: {"x":0.25, "top":0.65}
+            size_hint: 0.5, 0.10
+            text: '1. Press this button to select an image for the new post'
+            on_release: root.select_image()
+
+
+        Label:
+            # Positioning details
+            pos_hint: {"x":0.1, "top":0.525}
+            size_hint: 0.8, 0.08
+            text_size: 0.8*self.width, None
+            halign: 'center'
+            valign: 'middle'
+
+            id: 'post_name'
+            text: "2. Enter the name of the new post you would like to put on the website (For example, 'Volcano Candles' or 'Corkcicle Bottles') in the box below"
+
+        TextInput:
+            # Positioning details
+            pos_hint: {"x":0.3, "top":0.425}
+            size_hint: 0.4, 0.08
+
+        Label:
+            # Positioning details
+            pos_hint: {"x":0.1, "top":0.33}
+            size_hint: 0.8, 0.08
+            text_size: 0.8*self.width, None
+            halign: 'center'
+            valign: 'middle'
+
+            id: 'post_name'
+            text: "3. Enter a short blurb about the post you would like to put on the website in the box below"
+            
+        TextInput:
+            # Positioning details
+            pos_hint: {"x":0.1, "top":0.24}
+            size_hint: 0.8, 0.08
+
+        UpdateWebsite:
+            pos_hint: {"x":.35, "top":0.12}
+            size_hint: 0.3, 0.08
+            text: '4. Press this to update the website'
+            on_release: root.update_website()
+
+        Label:
+            pos_hint: {"x":0, "top":0.12}
+            size_hint: 1, 0.1
+            id: display
+            font_size: dp(50)
+            text: ''
+
+<RemovePost>:
+# This widget will be rendered if the Add Post to Website toggle button is pressed
+    id: 1
+    display: display
+    rows: 4
+    FloatLayout:
+        SelectImage:
+            pos_hint: {"x":0.25, "top":0.65}
+            size_hint: 0.5, 0.10
+            text: '1. Press this button to select an image for the new post'
+            on_release: root.select_image()
+
+
+        Label:
+            # Positioning details
+            pos_hint: {"x":0.1, "top":0.525}
+            size_hint: 0.8, 0.08
+            text_size: 0.8*self.width, None
+            halign: 'center'
+            valign: 'middle'
+
+            id: 'post_name'
+            text: "Pick out the post that you want to delete from the following list"
+
+        TextInput:
+            # Positioning details
+            pos_hint: {"x":0.3, "top":0.425}
+            size_hint: 0.4, 0.08
+
+        Label:
+            # Positioning details
+            pos_hint: {"x":0.1, "top":0.33}
+            size_hint: 0.8, 0.08
+            text_size: 0.8*self.width, None
+            halign: 'center'
+            valign: 'middle'
+
+            id: 'post_name'
+            text: "3. Enter a short blurb about the post you would like to put on the website in the box below"
+            
+        TextInput:
+            # Positioning details
+            pos_hint: {"x":0.1, "top":0.24}
+            size_hint: 0.8, 0.08
+
+        UpdateWebsite:
+            pos_hint: {"x":.35, "top":0.12}
+            size_hint: 0.3, 0.08
+            text: '4. Press this to update the website'
+            on_release: root.update_website()
+
+        Label:
+            pos_hint: {"x":0, "top":0.12}
+            size_hint: 1, 0.1
+            id: display
+            font_size: dp(50)
+            text: ''
