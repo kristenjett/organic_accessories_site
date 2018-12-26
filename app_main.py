@@ -41,11 +41,15 @@ class RemovePost(FloatLayout):
         except:
             pass
 
-
         # Find the file to remove
-        post_to_remove = postlist[int(self.ids.rm_post_id.text)-1] + '.md'
+        post_to_remove = postlist[int(self.ids.rm_post_id.text)-1]
         print(post_to_remove)
-        # print(self.ids.rm_post_id.text)
+        os.remove('content/home/'+post_to_remove)
+        # Remove the associated static content file
+        os.remove('static/img/home/'+post_to_remove[:-3]+'.jpg')
+        # Call the update_org_access_website.sh script to update the website/The Github repository
+        os.system('bash update_org_access_website.sh')
+
         return
     pass
 
