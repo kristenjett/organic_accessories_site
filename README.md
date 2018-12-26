@@ -1,5 +1,5 @@
 # organic_accessories_site
-<<<<<<< HEAD
+
 This is the repository to hold the website for my business, [Organic Accessories](organic-accessories.com). The main page of the site is shown below:
 
 ![front_page](static/front_page.png)
@@ -20,6 +20,3 @@ This shows the options and inputs for removing an existing post from the site.
 
 
 The backend of the GUI program makes changes to the files and rebuilds the site, hopefully allowing the user to ensure the content on the site reflects the current offerings at Organic Accessories.
-=======
-This is the repository to hold the website for my business, Organic Accessories. This repository holds the source code for the site, while my other repository holds the built site, built out of the docs folder. 
->>>>>>> ffa3870af19d2f053631bb76d4842ee5cf7e7660
