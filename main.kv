@@ -33,9 +33,10 @@
     rows: 4
     FloatLayout:
         Label:
-            pos_hint: {"x":0.25, "top":0.65}
+            pos_hint: {"x":0.25, "top":0.67}
             size_hint: 0.5, 0.05
-            text: 'A. Enter in the path to the image file for the new post'
+            text_size: 1.6*self.width, None
+            text: 'A. Enter in the name of the image file for the new post. Make sure the image file is in your Desktop, and include a file ending if shown (for example, .jpg or .png)'
 
         TextInput:
             pos_hint: {"x":0.1, "top":0.58}
@@ -135,3 +136,7 @@
             id: display
             font_size: dp(50)
             text: ''
+
+<Success>:
+# This widget will be rendered if the process completed successfully
+

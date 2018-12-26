@@ -6,6 +6,7 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.lang import Builder
 
 import os
+from shutil import copy2
 
 # This app will be run to create the Kivy frontend GUI to allow adjustments to the Organic-Accessories.com website. 
 # Specifically, the GUI will allow the user to add a new post to the website, or to remove an existing post from the site.
@@ -23,30 +24,25 @@ class UpdateWebsite(Button):
     pass
 
 class RemovePost(FloatLayout):
-    def select_image(self):
-        print("Select image called")
-        return
     def update_website(self):
 
         # Recreate the postlist since passing variables around is a boner in Kivy
         postlist =os.listdir('content/home/')
 
         # Try to remove these non-post files
-        try:
-            postlist.remove('_index.md')
-        except:
-            pass
-        try:
-            postlist.remove('.DS_Store')
-        except:
-            pass
+        for each in postlist:
+            if each[0] == '.' or each[0]=='_':
+                try:
+                    postlist.remove(each)
+                except:
+                    pass
 
         # Find the file to remove
         post_to_remove = postlist[int(self.ids.rm_post_id.text)-1]
         print(post_to_remove)
         os.remove('content/home/'+post_to_remove)
         # Remove the associated static content file
-        os.remove('static/img/home/'+post_to_remove[:-3]+'.jpg')
+        os.remove('static/img/home/'+post_to_remove[:-3])
         # Call the update_org_access_website.sh script to update the website/The Github repository
         os.system('bash update_org_access_website.sh')
 
@@ -55,11 +51,48 @@ class RemovePost(FloatLayout):
 
 
 class AddPost(FloatLayout):
-    def select_image(self):
-        print("Select image called")
-        return
+
     def update_website(self):
-        print("Update Website called")
+        # This function will create a new post, based on the info in the input boxes, and then update the website/git repository
+        image_name = self.ids.path_to_image.text
+        post_name = self.ids.new_post_name.text
+        # Convert the spaces in post_name to underscores
+        post_name = post_name.replace(" ", "_")
+        post_blurb = self.ids.post_blurb.text
+
+        # Lets copy the desired image to the static/img/home directory for consistency
+        # MODIFY BASED ON THE COMPUTER RUNNING THE PROGRAM
+        copy2('/Users/samjett/Desktop/'+ image_name, 'static/img/home/'+post_name)
+
+        # Lets create a new markdown file based on the minimal template below, and input the values entered in the GUI
+        # +++
+        # draft = false
+        # image = "img/home/blu_pepper.jpg"
+        # showonlyimage = true
+        # date = "2018-11-20T19:50:47+05:30"
+        # title = "Hoodie from Blu Pepper"
+        # weight = 1
+        # +++
+        # Import datetime module to get current date
+
+        from datetime import datetime
+
+        # Open the file and fill its contents
+        f = open('content/home/'+post_name+'.md', 'w+')
+        f.write('+++\n')
+        f.write('draft = false\n')
+        f.write('image = "img/home/'+post_name+'"\n')
+        f.write("showonlyimage = false\n")
+        f.write('date = "'+str(datetime.now().date())+'"\n')
+        f.write('Title = "'+post_name.replace('_', ' ')+'"\n')
+        f.write('weight = 1\n') # All posts are written with weight 1; This can be changed if desired
+        f.write('+++\n\n')
+        f.write(post_blurb+ '\n\n')
+        f.close()
+
+        # The final step should just be to run the shell script to update the website, just like in the remove case
+        # Call the update_org_access_website.sh script to update the website/The Github repository
+        os.system('bash update_org_access_website.sh')
         return
     pass
 
@@ -75,6 +108,8 @@ class DefaultState(FloatLayout):
             self.remove_widget(self.removepost)
         except:
             pass
+
+
         self.addpost = AddPost()
         self.add_widget(self.addpost)
 
@@ -98,14 +133,12 @@ class DefaultState(FloatLayout):
         counter = 1
 
         # Try to remove these non-post files
-        try:
-            postlist.remove('_index.md')
-        except:
-            pass
-        try:
-            postlist.remove('.DS_Store')
-        except:
-            pass
+        for each in postlist:
+            if each[0] == '.' or each[0]=='_':
+                try:
+                    postlist.remove(each)
+                except:
+                    pass
 
         for each in postlist:
             # Remove the .md from the end of each entry   
