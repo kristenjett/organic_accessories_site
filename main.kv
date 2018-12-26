@@ -43,8 +43,6 @@
             id: path_to_image
             text: ''
 
-
-
         Label:
             # Positioning details
             pos_hint: {"x":0.1, "top":0.51}
@@ -100,13 +98,14 @@
             text: 'A. Read through the following list of posts currently on your website and pick out which one you want to remove.'
 
         Label:
+        # This label will be modified by the posts currently on the website. The backend logic to fill it is contained within 
             id: postlistlbl
             pos_hint: {"x":0.1, "top":0.56}
             size_hint: 0.8, 0.2
             text_size: self.width, None
-            halign: 'center'
-            valign: 'middle'
-            text: 'Error'
+            # halign: 'center'
+            # valign: 'middle'
+            text: 'Error in collecting the current posts'
 
 
         Label:

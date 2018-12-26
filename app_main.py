@@ -1,3 +1,4 @@
+# Kivy imports
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
@@ -6,15 +7,14 @@ from kivy.lang import Builder
 
 import os
 
+# This app will be run to create the Kivy frontend GUI to allow adjustments to the Organic-Accessories.com website. 
+# Specifically, the GUI will allow the user to add a new post to the website, or to remove an existing post from the site.
+
 # Load in the button styles created in the /kv folder
 Builder.load_file('./kv/buttons.kv')
 
 
 # Define global variables
-global post_list
-global path_to_file
-global new_post_name
-global new_post_blurb
 
 class SelectImage(Button):
     pass
@@ -27,26 +27,42 @@ class RemovePost(FloatLayout):
         print("Select image called")
         return
     def update_website(self):
-        print("Update Website called")
+
+        # Recreate the postlist since passing variables around is a boner in Kivy
+        postlist =os.listdir('content/home/')
+
+        # Try to remove these non-post files
+        try:
+            postlist.remove('_index.md')
+        except:
+            pass
+        try:
+            postlist.remove('.DS_Store')
+        except:
+            pass
+
+
+        # Find the file to remove
+        post_to_remove = postlist[int(self.ids.rm_post_id.text)-1] + '.md'
+        print(post_to_remove)
+        # print(self.ids.rm_post_id.text)
         return
     pass
 
 
 class AddPost(FloatLayout):
-
+    def select_image(self):
+        print("Select image called")
+        return
     def update_website(self):
-        app = App.get_running_app()
         print("Update Website called")
-        print("The name of the new post is " + app.)
         return
     pass
 
 class DefaultState(FloatLayout):
-    # Defines functions to be called by the two buttons in default state
-    def update_website(self):
-        print("Update Website called")
-        return
     def add_post(self):
+        # Try to remove the addpost widget, if it already exists, and try to remove the removepost widget, so 
+        # that the addpost screen will be created from scratch again, removing any user inputs
         try:
             self.remove_widget(self.addpost)
         except:
@@ -59,6 +75,8 @@ class DefaultState(FloatLayout):
         self.add_widget(self.addpost)
 
     def remove_post(self):
+        # Try to remove the addpost widget, if it already exists, and try to remove the removepost widget, so 
+        # that the removepost screen will be created from scratch again, removing any user inputs
         try:
             self.remove_widget(self.addpost)
         except:
@@ -67,44 +85,45 @@ class DefaultState(FloatLayout):
             self.remove_widget(self.removepost)
         except:
             pass
-        
-        self.removepost = RemovePost()
-        app = App.get_running_app()
+            
+        # The below section builds the list of current posts on the website from listdir in the content/home directory
+        # Create the text table to include all of the posts taken from the content directory
+        postlist =os.listdir('content/home/')
 
-        # Get the current post list from the content/home folder
-        app.post_list = os.listdir('content/home')
+        post_out = ''
+        counter = 1
 
-        # Remove the .DS_Store and _index files
+        # Try to remove these non-post files
         try:
-            app.post_list.remove('_index.md')
-            app.post_list.remove('.DS_Store')
+            postlist.remove('_index.md')
+        except:
+            pass
+        try:
+            postlist.remove('.DS_Store')
         except:
             pass
 
-        # Turn the current posts on the site into a single string
-        post_str = ""
-        counter = 1
-        for post in app.post_list:
-            post_str = post_str + str(counter)+' - '
-            post_str = post_str + post[:-3]
-            if counter < len(app.post_list):
-                post_str = post_str + '   |   '
-                counter = counter+1
+        for each in postlist:
+            # Remove the .md from the end of each entry   
+            new_element = str(counter)+'.) ' + each[:-3]
+            new_element = new_element + ''.join([' ']*(30-len(new_element)))
+            post_out = post_out+new_element
+            if counter %3 == 0:
+                post_out = post_out+'\n'
+            counter = counter+1        
+        
+        self.removepost = RemovePost()
+        self.removepost.ids.postlistlbl.text = post_out
 
-        self.removepost.ids.postlistlbl.text = post_str
-
+        # Print the output to stdout
+        print(self.removepost.ids.postlistlbl.text)
+        app = App.get_running_app()
         self.add_widget(self.removepost)
         return
 
 
 
 class MainApp(App):
-    # Define the app attributes that I will use and modify as the app is running
-    post_list = []
-    path_to_image = ""
-    new_post_name = ""
-    post_blurb = ""
-    rm_post_id=''
 
     def build(self):
         self.default = DefaultState()
