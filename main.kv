@@ -33,17 +33,16 @@
     rows: 4
     FloatLayout:
         Label:
-            pos_hint: {"x":0.25, "top":0.65}
+            pos_hint: {"x":0.25, "top":0.67}
             size_hint: 0.5, 0.05
-            text: 'A. Enter in the path to the image file for the new post'
+            text_size: 1.6*self.width, None
+            text: 'A. Enter in the name of the image file for the new post. Make sure the image file is in your Desktop, and include a file ending if shown (for example, .jpg or .png)'
 
         TextInput:
             pos_hint: {"x":0.1, "top":0.58}
             size_hint: 0.8, 0.05
             id: path_to_image
             text: ''
-
-
 
         Label:
             # Positioning details
@@ -100,13 +99,14 @@
             text: 'A. Read through the following list of posts currently on your website and pick out which one you want to remove.'
 
         Label:
+        # This label will be modified by the posts currently on the website. The backend logic to fill it is contained within 
             id: postlistlbl
             pos_hint: {"x":0.1, "top":0.56}
             size_hint: 0.8, 0.2
             text_size: self.width, None
-            halign: 'center'
-            valign: 'middle'
-            text: 'Error'
+            # halign: 'center'
+            # valign: 'middle'
+            text: 'Error in collecting the current posts'
 
 
         Label:
@@ -136,3 +136,7 @@
             id: display
             font_size: dp(50)
             text: ''
+
+<Success>:
+# This widget will be rendered if the process completed successfully
+
