@@ -15,7 +15,8 @@ from shutil import copy2
 Builder.load_file('./kv/buttons.kv')
 
 
-# Define global variables
+# chdir to app directory
+os.chdir('/Users/kristenjett/website/organic_accessories_site')
 
 class SelectImage(Button):
     pass
@@ -30,6 +31,7 @@ class RemovePost(FloatLayout):
         postlist =os.listdir('content/home/')
 
         # Try to remove these non-post files
+
         for each in postlist:
             if each[0] == '.' or each[0]=='_':
                 try:
@@ -62,7 +64,7 @@ class AddPost(FloatLayout):
 
         # Lets copy the desired image to the static/img/home directory for consistency
         # MODIFY BASED ON THE COMPUTER RUNNING THE PROGRAM
-        copy2('/Users/samjett/Desktop/'+ image_name, 'static/img/home/'+post_name)
+        copy2('/Users/kristenjett/Desktop/'+ image_name, 'static/img/home/'+post_name)
 
         # Lets create a new markdown file based on the minimal template below, and input the values entered in the GUI
         # +++
