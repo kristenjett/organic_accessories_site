@@ -1,5 +1,5 @@
 +++
-draft = false
+draft = true
 image = "img/home/rd_style.jpg"
 date = "2018-11-20T19:56:17+05:30"
 title = "RD Style Outerwear"
