@@ -1,6 +1,6 @@
 +++
 image = "img/home/bishop_and_young.jpg"
-showonlyimage = false
+showonlyimage = true
 date = "2018-11-20T19:44:32+05:30"
 title = "Bishop + Young Top"
 draft = false
